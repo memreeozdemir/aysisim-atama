@@ -87,3 +87,13 @@ export const ILLER = {
 
 export const BOLGELER = ['Ege', 'Marmara', 'Akdeniz', 'İç Anadolu', 'Karadeniz', 'Doğu Anadolu', 'Güneydoğu Anadolu']
 
+// Kuş uçuşu mesafe × 1.25 ≈ karayolu mesafesi
+export function mesafeKm(a, b) {
+  const A = ILLER[a], B = ILLER[b]
+  if (!A || !B) return null
+  if (a === b) return 0
+  const r = (d) => (d * Math.PI) / 180
+  const dLat = r(B.lat - A.lat), dLon = r(B.lon - A.lon)
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(r(A.lat)) * Math.cos(r(B.lat)) * Math.sin(dLon / 2) ** 2
+  return Math.round(2 * 6371 * Math.asin(Math.sqrt(h)) * 1.25)
+}

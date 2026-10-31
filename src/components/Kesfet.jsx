@@ -4,11 +4,12 @@ import { baslik, fold, trSort, useStored } from '../lib/util'
 import KadroKart from './KadroKart'
 
 const SIRALAMA = {
+  onerilen: { ad: 'Önerilen', fn: (a, b) => b.ai.ham - a.ai.ham },
   adet: { ad: 'Münhal (çoktan aza)', fn: (a, b) => b.adet - a.adet },
   il: { ad: 'İl (A→Z)', fn: (a, b) => trSort(a.il, b.il) || trSort(a.birim, b.birim) },
 }
 
-const BOS = { ara: '', iller: [], bolgeler: [], turler: [], sira: 'adet' }
+const BOS = { ara: '', iller: [], bolgeler: [], turler: [], sira: 'onerilen' }
 const SAYFA = 36
 
 export default function Kesfet({ kadrolar, ...ortak }) {
@@ -17,7 +18,6 @@ export default function Kesfet({ kadrolar, ...ortak }) {
   const [limit, setLimit] = useState(SAYFA)
   const [acik, setAcik] = useState(false)
   const ara = useDeferredValue(f.ara)
-  const sira = SIRALAMA[f.sira] ? f.sira : BOS.sira
 
   const set = (p) => {
     setF((o) => ({ ...o, ...p }))
@@ -50,8 +50,8 @@ export default function Kesfet({ kadrolar, ...ortak }) {
         }
         return true
       })
-      .sort(SIRALAMA[sira].fn)
-  }, [kadrolar, f, ara, sira])
+      .sort(SIRALAMA[f.sira]?.fn ?? SIRALAMA.onerilen.fn)
+  }, [kadrolar, f, ara])
 
   const toplamAdet = sonuc.reduce((s, k) => s + k.adet, 0)
   const ilListesi = tumIller.filter(([il]) => !ilAra || fold(il).includes(fold(ilAra)))
@@ -136,7 +136,7 @@ export default function Kesfet({ kadrolar, ...ortak }) {
             <strong>{sonuc.length.toLocaleString('tr-TR')}</strong> ilan ·{' '}
             <strong>{toplamAdet.toLocaleString('tr-TR')}</strong> münhal
           </p>
-          <select value={sira} onChange={(e) => set({ sira: e.target.value })} aria-label="Sıralama">
+          <select value={f.sira} onChange={(e) => set({ sira: e.target.value })} aria-label="Sıralama">
             {Object.entries(SIRALAMA).map(([k, v]) => (
               <option key={k} value={k}>
                 {v.ad}
