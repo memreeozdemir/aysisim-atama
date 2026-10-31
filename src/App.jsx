@@ -147,8 +147,7 @@ export default function App() {
       </main>
 
       <footer>
-        Emre’den Ayşişim’e 💛 · Veri: 2026-3 İlk Defa ve Yeniden Atama, Diş Tabibi kadroları · Tercihini göndermeden
-        önce resmî ilan metnini mutlaka kontrol et.
+        Emre’den Ayşişim’e 💛 · Veri: 2026-3 İlk Defa ve Yeniden Atama, Diş Tabibi kadroları
       </footer>
 
       {mektupAcik && <Mektup kapat={mektubuKapat} />}
