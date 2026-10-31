@@ -9,7 +9,7 @@ const SIRALAMA = {
   il: { ad: 'İl (A→Z)', fn: (a, b) => trSort(a.il, b.il) || trSort(a.birim, b.birim) },
 }
 
-const BOS = { ara: '', iller: [], bolgeler: [], turler: [], cokKadro: false, sira: 'onerilen' }
+const BOS = { ara: '', iller: [], bolgeler: [], turler: [], sira: 'onerilen' }
 const SAYFA = 36
 
 export default function Kesfet({ kadrolar, ...ortak }) {
@@ -44,7 +44,6 @@ export default function Kesfet({ kadrolar, ...ortak }) {
         if (f.iller.length && !f.iller.includes(k.il)) return false
         if (f.bolgeler.length && !f.bolgeler.includes(ILLER[k.il]?.bolge)) return false
         if (f.turler.length && !f.turler.includes(k.tur)) return false
-        if (f.cokKadro && k.adet < 2) return false
         if (q.length) {
           const metin = fold(`${k.il} ${k.birim}`)
           if (!q.every((w) => metin.includes(w))) return false
@@ -56,7 +55,7 @@ export default function Kesfet({ kadrolar, ...ortak }) {
 
   const toplamAdet = sonuc.reduce((s, k) => s + k.adet, 0)
   const ilListesi = tumIller.filter(([il]) => !ilAra || fold(il).includes(fold(ilAra)))
-  const aktifFiltre = f.iller.length + f.bolgeler.length + f.turler.length + (f.cokKadro ? 1 : 0) + (f.ara ? 1 : 0)
+  const aktifFiltre = f.iller.length + f.bolgeler.length + f.turler.length + (f.ara ? 1 : 0)
 
   return (
     <div className="kesfet">
@@ -85,12 +84,6 @@ export default function Kesfet({ kadrolar, ...ortak }) {
         </div>
 
         <div className="filtre-govde">
-          <label className="anahtar">
-            <input type="checkbox" checked={f.cokKadro} onChange={(e) => set({ cokKadro: e.target.checked })} />
-            <span className="ray" />
-            Sadece 2+ kadrolu ilanlar
-          </label>
-
           <div className="grup">
             <h4>Bölge</h4>
             <div className="chipler">
