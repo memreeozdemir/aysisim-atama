@@ -32,7 +32,12 @@ const ONE_CIKAN = [
   },
 ]
 
+// Bu iller hiçbir öneriye girmez
+const ONERI_DISI = new Set(['İSTANBUL'])
+
 export function akilliPuan(k) {
+  if (ONERI_DISI.has(k.il)) return { skor: 0, ham: -1000, rozet: null, nedenler: [], oneriDisi: true }
+
   const il = ILLER[k.il] || {}
   const km = mesafeKm(MERKEZ, k.il) ?? 1100
   const nedenler = []

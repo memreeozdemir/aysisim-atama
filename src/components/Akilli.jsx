@@ -5,7 +5,10 @@ import KadroKart from './KadroKart'
 export default function Akilli({ kadrolar, ...ortak }) {
   const [adet, setAdet] = useState(24)
 
-  const liste = useMemo(() => [...kadrolar].sort((a, b) => b.ai.ham - a.ai.ham || b.adet - a.adet), [kadrolar])
+  const liste = useMemo(
+    () => kadrolar.filter((k) => !k.ai.oneriDisi).sort((a, b) => b.ai.ham - a.ai.ham || b.adet - a.adet),
+    [kadrolar],
+  )
 
   return (
     <div className="akilli">
