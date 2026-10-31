@@ -19,6 +19,7 @@ const ONE_CIKAN = [
       'Denizli merkeze ~45 dk, Muğla’ya kısa yol',
       'Düşük yaşam maliyeti, sakin ilçe hayatı',
       'Devlet hastanesinde yoğun ve öğretici diş polikliniği',
+      'Ve en önemlisi: bana daha yakın 😊',
     ],
   },
   {
@@ -28,6 +29,7 @@ const ONE_CIKAN = [
       'Ege kıyısı, ılıman iklim ve deniz',
       'İzmir & Muğla’ya yakın; havalimanı ve otoyol erişimi',
       'Nazilli, Kuşadası gibi yaşanabilir ilçeler',
+      'Ve en önemlisi: bana daha yakın 😊',
     ],
   },
 ]

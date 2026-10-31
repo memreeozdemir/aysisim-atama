@@ -6,6 +6,7 @@ import Kesfet from './components/Kesfet'
 import Akilli from './components/Akilli'
 import Tercihler from './components/Tercihler'
 import Dagilim from './components/Dagilim'
+import Mektup from './components/Mektup'
 
 const SEKMELER = [
   { id: 'kesfet', ad: 'Keşfet', ikon: '🧭' },
@@ -24,6 +25,12 @@ export default function App() {
   const [sekme, setSekme] = useStored('ds.sekme', 'kesfet')
   const [kayitliIdler, setTercihIdler] = useStored('ds.tercihler', [])
   const [toast, setToast] = useState(null)
+  const [mektupGoruldu, setMektupGoruldu] = useStored('ds.mektup', false)
+  const [mektupAcik, setMektupAcik] = useState(!mektupGoruldu)
+  const mektubuKapat = useCallback(() => {
+    setMektupAcik(false)
+    setMektupGoruldu(true)
+  }, [setMektupGoruldu])
 
   // #akilli gibi bir adresle doğrudan sekme açılabilsin
   useEffect(() => {
@@ -80,7 +87,12 @@ export default function App() {
 
       <header className="hero">
         <div className="hero-metin">
-          <span className="kicker">2026-3 Açıktan Atama · Diş Tabibi</span>
+          <div className="kicker-satir">
+            <span className="kicker">2026-3 Açıktan Atama · Diş Tabibi</span>
+            <button className="mektup-ac" onClick={() => setMektupAcik(true)} title="Notu tekrar oku">
+              💌 <span>notun</span>
+            </button>
+          </div>
           <h1>
             <em>Ayşişim</em> için atama uygulaması <span className="dalga">🦷</span>
           </h1>
@@ -135,9 +147,11 @@ export default function App() {
       </main>
 
       <footer>
-        Ayşişim için 💛 ile yapıldı · Veri: 2026-3 İlk Defa ve Yeniden Atama, Diş Tabibi kadroları · Tercihini göndermeden
+        Emre’den Ayşişim’e 💛 · Veri: 2026-3 İlk Defa ve Yeniden Atama, Diş Tabibi kadroları · Tercihini göndermeden
         önce resmî ilan metnini mutlaka kontrol et.
       </footer>
+
+      {mektupAcik && <Mektup kapat={mektubuKapat} />}
 
       {toast && (
         <div key={toast.id} className={`toast ${toast.tur}`} role="status">
