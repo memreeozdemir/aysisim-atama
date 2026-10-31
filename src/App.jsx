@@ -1,31 +1,27 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import KADROLAR from './data/kadrolar.json'
-import { akilliPuan } from './lib/akilli'
 import { useStored, MAX_TERCIH } from './lib/util'
 import Kesfet from './components/Kesfet'
-import Akilli from './components/Akilli'
 import Tercihler from './components/Tercihler'
 import Dagilim from './components/Dagilim'
 
 const SEKMELER = [
   { id: 'kesfet', ad: 'Keşfet', ikon: '🧭' },
-  { id: 'akilli', ad: 'Akıllı Sıralama', ikon: '✨' },
   { id: 'tercih', ad: 'Tercih Listem', ikon: '📋' },
   { id: 'dagilim', ad: 'Dağılım', ikon: '📊' },
 ]
 
-// Her kadronun akıllı puanı sabit; bir kez hesaplanır
-const KADROLAR_AI = KADROLAR.map((k) => ({ ...k, ai: akilliPuan(k) }))
-const KADRO_MAP = new Map(KADROLAR_AI.map((k) => [k.id, k]))
+const KADRO_MAP = new Map(KADROLAR.map((k) => [k.id, k]))
 const TOPLAM_MUNHAL = KADROLAR.reduce((s, k) => s + k.adet, 0)
 const IL_SAYISI = new Set(KADROLAR.map((k) => k.il)).size
 
 export default function App() {
-  const [sekme, setSekme] = useStored('ds.sekme', 'kesfet')
+  const [kayitliSekme, setSekme] = useStored('ds.sekme', 'kesfet')
+  const sekme = SEKMELER.some((s) => s.id === kayitliSekme) ? kayitliSekme : 'kesfet'
   const [kayitliIdler, setTercihIdler] = useStored('ds.tercihler', [])
   const [toast, setToast] = useState(null)
 
-  // #akilli gibi bir adresle doğrudan sekme açılabilsin
+  // #tercih gibi bir adresle doğrudan sekme açılabilsin
   useEffect(() => {
     const h = location.hash.slice(1)
     if (SEKMELER.some((s) => s.id === h)) setSekme(h)
@@ -55,22 +51,10 @@ export default function App() {
     },
     [tercihIdler, setTercihIdler, bildir],
   )
-  const ekleBirden = useCallback(
-    (ks) => {
-      const yeni = [...tercihIdler]
-      for (const k of ks) if (yeni.length < MAX_TERCIH && !yeni.includes(k.id)) yeni.push(k.id)
-      const n = yeni.length - tercihIdler.length
-      if (n) {
-        setTercihIdler(yeni)
-        bildir(`${n} öneri tercih listene eklendi ✨`)
-      }
-    },
-    [tercihIdler, setTercihIdler, bildir],
-  )
   const cikar = useCallback((id) => setTercihIdler(tercihIdler.filter((x) => x !== id)), [tercihIdler, setTercihIdler])
   const tercihSirasi = useCallback((id) => tercihIdler.indexOf(id) + 1, [tercihIdler])
 
-  const ortak = { ekle, ekleBirden, cikar, tercihSirasi, tercihSayi: tercihIdler.length }
+  const ortak = { ekle, cikar, tercihSirasi, tercihSayi: tercihIdler.length }
 
   return (
     <div className="app">
@@ -120,8 +104,7 @@ export default function App() {
       </nav>
 
       <main>
-        {sekme === 'kesfet' && <Kesfet kadrolar={KADROLAR_AI} {...ortak} />}
-        {sekme === 'akilli' && <Akilli kadrolar={KADROLAR_AI} {...ortak} />}
+        {sekme === 'kesfet' && <Kesfet kadrolar={KADROLAR} {...ortak} />}
         {sekme === 'tercih' && (
           <Tercihler
             tercihler={tercihler}
@@ -131,7 +114,7 @@ export default function App() {
             {...ortak}
           />
         )}
-        {sekme === 'dagilim' && <Dagilim kadrolar={KADROLAR_AI} />}
+        {sekme === 'dagilim' && <Dagilim kadrolar={KADROLAR} />}
       </main>
 
       <footer>

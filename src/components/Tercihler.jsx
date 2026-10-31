@@ -47,11 +47,6 @@ export default function Tercihler({ tercihler, setTercihIdler, cikar, bildir, gi
     URL.revokeObjectURL(a.href)
   }
 
-  const akilliDiz = () => {
-    setTercihIdler([...tercihler].sort((a, b) => b.ai.ham - a.ai.ham).map((k) => k.id))
-    bildir('Tercihlerin önerilen sıraya dizildi ✨')
-  }
-
   const temizle = () => {
     if (confirm('Tüm tercih listesi silinsin mi?')) setTercihIdler([])
   }
@@ -86,9 +81,6 @@ export default function Tercihler({ tercihler, setTercihIdler, cikar, bildir, gi
           )}
         </div>
         <div className="aksiyonlar no-print">
-          <button className="btn ghost" onClick={akilliDiz} disabled={tercihler.length < 2}>
-            ✨ Önerilen sıraya diz
-          </button>
           <button className="btn ghost" onClick={kopyala} disabled={!tercihler.length}>
             Kopyala
           </button>

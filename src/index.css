@@ -11,8 +11,6 @@
   --nane-acik: #d6f2ec;
   --lila: #8b7cf6;
   --lila-acik: #ece8ff;
-  --altin: #e3a43a;
-  --altin-acik: #fff3d9;
   --golge: 0 1px 2px rgba(60, 40, 30, 0.04), 0 8px 28px -10px rgba(60, 40, 30, 0.14);
   --golge-hover: 0 2px 4px rgba(60, 40, 30, 0.05), 0 18px 40px -14px rgba(60, 40, 30, 0.22);
   --r: 22px;
@@ -140,7 +138,6 @@ input[type='range'] { width: 100%; accent-color: var(--mercan); }
 .kadro:hover { transform: translateY(-3px); box-shadow: var(--golge-hover); }
 @keyframes belir { from { opacity: 0; transform: translateY(8px); } }
 .kadro.secili { border-color: rgba(46, 156, 143, 0.45); background: linear-gradient(180deg, rgba(214, 242, 236, 0.6), var(--kart) 60%); }
-.kadro.altin { border: 1.5px solid rgba(227, 164, 58, 0.55); background: linear-gradient(160deg, var(--altin-acik), rgba(255, 255, 255, 0.85) 55%); }
 .kadro-ust { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .il-chip { font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
 .il-chip em { font-style: normal; color: var(--ink-3); font-weight: 500; }
@@ -151,39 +148,16 @@ input[type='range'] { width: 100%; accent-color: var(--mercan); }
 .etiketler { display: flex; flex-wrap: wrap; gap: 6px; }
 .etiket { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: #f1ece6; color: var(--ink-2); }
 .etiket.tur { background: var(--lila-acik); color: #5b4bc4; }
-.altin-etiket { background: linear-gradient(135deg, #f6c35b, #e3a43a); color: white; }
 .sart { margin: 0; font-size: 12px; color: #9a5b12; background: #fff4e0; border-radius: 10px; padding: 6px 9px; }
 .kadro-alt { margin-top: auto; padding-top: 6px; }
 .kadro-alt .btn { width: 100%; }
-.sira-no { position: absolute; top: -10px; left: -10px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: white; font-weight: 700; font-size: 13px; box-shadow: 0 4px 10px -3px rgba(43, 36, 51, 0.5); }
-.altin .sira-no { background: linear-gradient(135deg, #f6c35b, #e3a43a); }
 
-.uyum { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 700; color: var(--nane); }
-.uyum-bar { flex: 1; height: 7px; background: #ece6df; border-radius: 99px; overflow: hidden; position: relative; }
-.uyum-bar::after { content: ''; position: absolute; inset: 0; width: var(--w); border-radius: 99px; background: linear-gradient(90deg, #7fd3c3, var(--nane)); animation: dol 0.8s ease both; }
-.altin .uyum { color: #b77a12; }
-.altin .uyum-bar::after { background: linear-gradient(90deg, #f6d07f, var(--altin)); }
-@keyframes dol { from { width: 0; } }
-.nedenler { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.nedenler li { font-size: 12.5px; color: var(--ink-2); padding-left: 20px; position: relative; }
-.nedenler li::before { content: '✓'; position: absolute; left: 2px; color: var(--nane); font-weight: 700; }
 
 .bos { text-align: center; padding: 48px 20px; }
 .bos span { font-size: 44px; }
 .bos h3 { font-family: var(--serif); font-weight: 600; margin: 8px 0 4px; }
 .bos p { color: var(--ink-3); margin: 0; }
 
-/* Akıllı */
-.akilli-hero { display: flex; align-items: center; gap: 20px; padding: 24px 26px; margin-bottom: 26px; background: linear-gradient(120deg, rgba(255, 228, 218, 0.85), rgba(236, 232, 255, 0.85) 60%, rgba(214, 242, 236, 0.85)); }
-.akilli-hero > div:nth-child(2) { flex: 1; }
-.parilti { font-size: 36px; width: 64px; height: 64px; flex: none; border-radius: 20px; background: white; display: grid; place-items: center; box-shadow: var(--golge); animation: parla 2.6s ease-in-out infinite; }
-@keyframes parla { 50% { transform: scale(1.06) rotate(-6deg); } }
-.akilli-hero h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 0 0 4px; }
-.akilli-hero p { margin: 0; color: var(--ink-2); }
-.ipucu { margin-top: 8px !important; font-size: 13.5px; }
-.podyum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; padding-left: 10px; }
-.podyum .kadro { padding: 22px; }
-.akilli .grid { padding-left: 10px; margin-top: 8px; row-gap: 22px; }
 
 /* Tercihler */
 .tercih-ozet { display: flex; align-items: center; gap: 22px; padding: 22px 24px; margin-bottom: 16px; flex-wrap: wrap; }
@@ -203,7 +177,6 @@ input[type='range'] { width: 100%; accent-color: var(--mercan); }
 .slot.dolu:active { cursor: grabbing; }
 .slot.suruklenen { opacity: 0.4; }
 .slot.hedef { box-shadow: 0 0 0 2.5px var(--lila), var(--golge-hover); transform: scale(1.01); }
-.slot.uyumsuz { border-color: #f6c08f; }
 .tutamac { color: var(--ink-3); letter-spacing: -3px; font-weight: 700; }
 .slot-no { width: 38px; height: 38px; flex: none; border-radius: 12px; display: grid; place-items: center; font-family: var(--serif); font-weight: 700; font-size: 18px; background: linear-gradient(135deg, var(--mercan), #f39a6b); color: white; }
 .slot-govde { flex: 1; min-width: 0; display: grid; gap: 4px; }
@@ -232,6 +205,7 @@ input[type='range'] { width: 100%; accent-color: var(--mercan); }
 .c-ad { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink-2); }
 .c-ray { height: 12px; position: relative; }
 .c-dolu { position: absolute; left: 0; top: 0; bottom: 0; width: var(--w); min-width: 3px; background: var(--nane); border-radius: 2px 4px 4px 2px; animation: dol 0.7s ease both; }
+@keyframes dol { from { width: 0; } }
 .c-deger { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); }
 .c-ipucu { position: absolute; left: 50%; bottom: calc(100% + 4px); transform: translateX(-50%); background: var(--ink); color: white; font-size: 12px; padding: 5px 9px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.12s; z-index: 5; }
 .cubuklar li:hover .c-ipucu, .cubuklar li:focus-visible .c-ipucu { opacity: 1; }
@@ -249,8 +223,6 @@ footer { text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top:
 @media (max-width: 860px) {
   .kesfet { grid-template-columns: 1fr; }
   .filtreler { position: static; max-height: none; }
-  .podyum { grid-template-columns: 1fr; }
-  .akilli-hero { flex-direction: column; align-items: flex-start; }
   .dagilim-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
