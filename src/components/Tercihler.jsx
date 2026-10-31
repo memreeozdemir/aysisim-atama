@@ -67,7 +67,7 @@ export default function Tercihler({ tercihler, setTercihIdler, cikar, bildir, gi
           <h2>Tercih listem</h2>
           <p>
             {tercihler.length === 0
-              ? 'Henüz tercih eklemedin. Keşfet veya Akıllı Sıralama’dan ekleyebilirsin.'
+              ? 'Henüz tercih eklemedin. Keşfet’ten ekleyebilirsin.'
               : bosSayi > 0
                 ? `${bosSayi} boş tercihin var. Listeyi sürükleyerek sıralayabilirsin.`
                 : 'Liste tamam! Sıralamayı son kez gözden geçir.'}
