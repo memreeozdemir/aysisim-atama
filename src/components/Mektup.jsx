@@ -32,10 +32,10 @@ export default function Mektup({ kapat }) {
         <article className="mektup">
           <p className="mektup-hitap">Ayşişim,</p>
           <p>
-            Tercihlerini yaparken işin biraz olsun kolaylaşsın diye bu uygulamayı senin için yaptım. Bütün diş tabibi
-            kadroları burada; istediğin gibi filtrele, karşılaştır, 10 tercihini rahat rahat sırala.
+            Tercihlerini yaparken işin biraz olsun kolaylaşsın diye bu uygulamayı senin için yaptım. Bütün kadrolar
+            burada; istediğin gibi filtrele, karşılaştır, 10 tercihini rahat rahat sırala.
           </p>
-          <p>Kafana takılan bir şey olursa ben hep buradayım 💛</p>
+          <p>Eğer yapmamı istediğin bir şey olursa ben hep yanındayım 💛</p>
           <p className="mektup-son">Dünyanın en güzel hekimine 🦷💛</p>
           <button className="btn buyuk" onClick={kapat}>
             Hadi tercihlere bakalım
