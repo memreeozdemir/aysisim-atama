@@ -32,12 +32,11 @@ export default function Mektup({ kapat }) {
         <article className="mektup">
           <p className="mektup-hitap">Ayşişim,</p>
           <p>
-            Atama heyecanını biraz olsun hafifletmek için bu küçük uygulamayı senin için hazırladım. Bütün diş tabibi
-            kadroları burada; filtrele, karşılaştır, 10 tercihini gönül rahatlığıyla sırala.
+            Tercihlerini yaparken işin biraz olsun kolaylaşsın diye bu uygulamayı senin için yaptım. Bütün diş tabibi
+            kadroları burada; istediğin gibi filtrele, karşılaştır, 10 tercihini rahat rahat sırala.
           </p>
-          <p>Nereye çıkarsa çıksın, en güzel yer orası olacak; çünkü sen orada olacaksın.</p>
-          <p>Ama yine de… Akıllı Sıralama’ya bir göz at derim 😊</p>
-          <p className="mektup-son">Bol şans, diş hekimim 🦷💛</p>
+          <p>Kafana takılan bir şey olursa ben hep buradayım 💛</p>
+          <p className="mektup-son">Dünyanın en güzel hekimine 🦷💛</p>
           <button className="btn buyuk" onClick={kapat}>
             Hadi tercihlere bakalım
           </button>
