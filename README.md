@@ -2,6 +2,8 @@
 
 2026-3 açıktan atama listesindeki **diş tabibi** kadrolarını keşfetmek, akıllı sıralamayla öne çıkan yerleri görmek ve 10 tercihlik listeyi oluşturmak için küçük bir React + Vite uygulaması.
 
+🌐 **Canlı:** https://memreeozdemir.github.io/aysisim-atama/
+
 ```bash
 npm install
 npm run dev
